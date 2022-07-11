@@ -57,7 +57,17 @@ To have the layout of the N channel MOSFET device we need to use
 - TWO N ACTIVE which forms the drain and source connection
 - P WELL which forms the body to make the ground connection 
 - POLYSILICON CONTACT for gate terminal
+
 The construction looks like this 
 
 ![NMOS_4](https://user-images.githubusercontent.com/55652905/178329986-ab3b1078-bdbc-47b2-a41c-583e0b6a1c5b.JPG) ![NMOS_5](https://user-images.githubusercontent.com/55652905/178330022-0647ab2f-75fe-4b49-a649-400383b6a6de.JPG)
+
+obviously we can make the scice model and spice code to simulate the same graph just like earlier. In the 3D view we can see the respective diffusion layers clearly.
+After this it's time to have some checking done
+- ERC - Electrical Rule Check allows well check i.e. the tool checks if the connection of well is made properly or not
+- NCC - Network Consistency Check checks topology, width, size is accordinf the schematic This operation is sometimes called Layout vs. Schematic (LVS)
+Both of the options available in the TOOLS tab. For successful design you will get "No well error found" and "Summary for all cells: exports match, topologies match, sizes match". 
+In such manner we can also conduct the test of P channel MOSFET device. This conclude our introductory part of the project and we can enter to the actual heading of the topic. For different circuit we will also simulate various parameter matrix like various propagation delay, power dessipation and many more so lets just dive right in to our first circuit 
+
+# Circuit 1 - The INVERTER 
 
