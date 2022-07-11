@@ -8,10 +8,30 @@ Aim of project to discuss various 2 transistor circuit applications like basic I
 
 Let us first discuss a simple mos technology and Try to establish the characterestic graph from schematic and then from layout 
 
-- ![NMOS_1](https://user-images.githubusercontent.com/55652905/178313979-1f7bfc69-3794-4922-a449-4e75e895c508.JPG)
+ ![NMOS_1](https://user-images.githubusercontent.com/55652905/178313979-1f7bfc69-3794-4922-a449-4e75e895c508.JPG)
 
 We have attempted to make a simple 4 port NMOS circuit in Electric VLSI CAD Tool. In this particular cell we have to select a 4  terminal NMOS from the component list and. export the names of terminal as gate(g), drain(d), source(s) and obviously to avoid the body effect and lowering of threshold we make the body terminal to ground(gnd). Most importantly we have made the parameters as follows
 - ```WIDTH = 10```
 - ```Length = 2```
 
 Now as we are using 180nm Technology so it is quite expected the width is 10 * 180 = 1.8um and length is 2 * 180 = 0.36um 
+Set the Spice model by refering to the technology parameter, in my case its "NMOS"
+After the schematic its time to have Design Rule Check (DRC), we can have it in Tools tab and then under it the is DRC option then check hierarchically.
+In my case it made successfully with 0 error and 0 warning.
+
+To check the simulation we need LTSpice and have to write the corrosponding spice code 
+- The spice code as follows 
+```
+vg g 0 dc 0
+vs s 0 dc 0
+vd d 0 dc 0
+.dc vd 0 1.8 0.1m vg 0 1.8 0.3
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+```
+the last line defines the path to my technology file which is "C5_model.txt"
+So after invoking the LTSpice we can have our desired result
+
+![NMOS_2](https://user-images.githubusercontent.com/55652905/178317202-089d121c-ce6f-4dab-8883-e4d848dc1a42.JPG)
+
+Such grah is our age old [output characterestic graph]
+
