@@ -52,3 +52,12 @@ and the corrosponding curve obtained is like-
 Now such a curve is our Drain current v/s Gate voltage 
 
 After achieveing the characterestic curve my aim is to draw the schematic of the circuit and then  to have an Layout V/S Schematic 
+To have the layout of the N channel MOSFET device we need to use 
+- NMOS the device
+- TWO N ACTIVE which forms the drain and source connection
+- P WELL which forms the body to make the ground connection 
+- POLYSILICON CONTACT for gate terminal
+The construction looks like this 
+
+![NMOS_4](https://user-images.githubusercontent.com/55652905/178329986-ab3b1078-bdbc-47b2-a41c-583e0b6a1c5b.JPG) ![NMOS_5](https://user-images.githubusercontent.com/55652905/178330022-0647ab2f-75fe-4b49-a649-400383b6a6de.JPG)
+
