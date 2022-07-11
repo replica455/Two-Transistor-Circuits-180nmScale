@@ -28,10 +28,15 @@ vd d 0 dc 0
 .dc vd 0 1.8 0.1m vg 0 1.8 0.3
 .include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
 ```
-the last line defines the path to my technology file which is "C5_model.txt"
+the last line defines the path to my technology file which is "C5_model.txt". Here we have we have sweept the drain voltage from 0 to 1.8V with an interval of 0.1mV and teaced the drain current (Id) woth respect to constant gate voltage.  
 So after invoking the LTSpice we can have our desired result
 
 ![NMOS_2](https://user-images.githubusercontent.com/55652905/178317202-089d121c-ce6f-4dab-8883-e4d848dc1a42.JPG)
 
 Such grah is our age old [output characterestic graph]
+Now on similar fassion we can sweep the gate voltage only keeping the drain voltage to constant 1.8V and trace out the drain current, the curve obtained is like this
 
+![NMOS_3](https://user-images.githubusercontent.com/55652905/178319941-18c75d73-6c47-469d-9708-1c07d93fb29f.JPG)
+Now such a curve is our Drain current v/s Gate voltage 
+
+After achieveing the characterestic curve my aim is to draw the schematic of the circuit.
