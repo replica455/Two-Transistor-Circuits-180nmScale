@@ -1,0 +1,17 @@
+*** SPICE deck for cell NMOS{lay} from library NMOS
+*** Created on Sun Jul 10, 2022 16:42:02
+*** Last revised on Mon Jul 11, 2022 23:25:09
+*** Written on Mon Jul 11, 2022 23:25:29 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: NMOS{lay}
+Mnmos@1 s g d gnd NMOS L=0.36U W=1.8U AS=2.106P AD=2.106P PS=5.94U PD=5.94U
+
+* Spice Code nodes in cell cell 'NMOS{lay}'
+vg g 0 dc 0
+vs s 0 dc 0
+vd d 0 dc 0
+.dc vd 0 1.8 0.1m vg 0 1.8 0.3
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END

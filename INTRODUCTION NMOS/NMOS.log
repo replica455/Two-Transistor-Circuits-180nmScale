@@ -1,0 +1,30 @@
+Circuit: *** SPICE deck for cell NMOS{lay} from library NMOS
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+.OP point found by inspection.
+.step vg=0
+.step vg=0.3
+.step vg=0.6
+.step vg=0.9
+.step vg=1.2
+.step vg=1.5
+.step vg=1.8
+
+Date: Mon Jul 11 23:25:30 2022
+Total elapsed time: 0.656 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 252024
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 6
+fillins = 0
+solver = Normal
+Matrix Compiler1: 236 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler2: 364 bytes object code size  0.1/0.1/[0.0]
+
