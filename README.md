@@ -34,9 +34,21 @@ So after invoking the LTSpice we can have our desired result
 ![NMOS_2](https://user-images.githubusercontent.com/55652905/178317202-089d121c-ce6f-4dab-8883-e4d848dc1a42.JPG)
 
 Such grah is our age old [output characterestic graph]
-Now on similar fassion we can sweep the gate voltage only keeping the drain voltage to constant 1.8V and trace out the drain current, the curve obtained is like this
+Now on similar fassion we can sweep the gate voltage only keeping the drain voltage to constant 1.8V and trace out the drain current,
+in this case our spice code can be modified like this-
+```
+vg g 0 dc 0
+vs s 0 dc 0
+vd d 0 dc 1.8
+.dc vg 0 1.8 0.01
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END
+
+```
+and the corrosponding curve obtained is like-
 
 ![NMOS_3](https://user-images.githubusercontent.com/55652905/178319941-18c75d73-6c47-469d-9708-1c07d93fb29f.JPG)
+
 Now such a curve is our Drain current v/s Gate voltage 
 
-After achieveing the characterestic curve my aim is to draw the schematic of the circuit.
+After achieveing the characterestic curve my aim is to draw the schematic of the circuit and then  to have an Layout V/S Schematic 
