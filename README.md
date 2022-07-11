@@ -1,8 +1,8 @@
 # Design and Analysis of Various 2 MOSFET circuits in 180nm technology scale
 
 Aim of project to discuss various 2 transistor circuit applications like basic Inverter, Current mirror, amplifier, 2:1 MUX and many more.
-1. The tools used - ```Electric Vlsi Tool``` ``` LTSpice```
-2. Technoligy file - ```BSIM3 models for AMI Semiconductor's C5 process```
+- The tools used - ```Electric Vlsi Tool``` ``` LTSpice```
+- Technoligy file - ```BSIM3 models for AMI Semiconductor's C5 process```
 
 # Introduction
 
