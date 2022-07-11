@@ -65,10 +65,11 @@ The construction looks like this
 obviously we can make the scice model and spice code to simulate the same graph just like earlier. In the 3D view we can see the respective diffusion layers clearly.
 After this it's time to have some checking done
 - ERC - Electrical Rule Check allows well check i.e. the tool checks if the connection of well is made properly or not
-- NCC - Network Consistency Check checks topology, width, size is accordinf the schematic This operation is sometimes called Layout vs. Schematic (LVS)
+- NCC - Network Consistency Check checks topology, width, size is according to the schematic This operation is sometimes called Layout vs. Schematic (LVS)
 
 Both of the options available in the TOOLS tab. For successful design you will get "No well error found" and "Summary for all cells: exports match, topologies match, sizes match". 
 In such manner we can also conduct the test of P channel MOSFET device. This conclude our introductory part of the project and we can enter to the actual heading of the topic. For different circuit we will also simulate various parameter matrix like various propagation delay, power dessipation and many more so lets just dive right in to our first circuit 
 
 # Circuit 1 - The INVERTER 
 
+❗ Updating Soon ❗
