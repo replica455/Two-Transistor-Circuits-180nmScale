@@ -70,6 +70,55 @@ After this it's time to have some checking done
 Both of the options available in the TOOLS tab. For successful design you will get "No well error found" and "Summary for all cells: exports match, topologies match, sizes match". 
 In such manner we can also conduct the test of P channel MOSFET device. This conclude our introductory part of the project and we can enter to the actual heading of the topic. For different circuit we will also simulate various parameter matrix like various propagation delay, power dessipation and many more so lets just dive right in to our first circuit 
 
-# Circuit 1 - The INVERTER 
+# Circuit 1 - The CMOS INVERTER 
+
+So this is the digital inverter. the input voltage Vin switches one of two transistor to ON state while other remains OFF.
+- The Schematic 
+
+![INVERTER_1](https://user-images.githubusercontent.com/55652905/178407851-051116ea-dccb-48e9-bdbf-eeefe50e3c31.JPG)
+
+along with the schematic cell of the inverter we have also created the icon view so as to reffer in other circuit with abstraction to internal circuitry and for the sake of convenience we have placed our spice code on the icon view. Asusual do perform the DRC check after forming the schematic.
+
+- Layout
+
+To have the layout of the of CMOS Inverter device we need to use 
+- NMOS the device
+- TWO N ACTIVE which forms the drain and source connection of NMOS
+- P WELL which forms the body to make the ground connection of NMOS
+- POLYSILICON CONTACT for gate terminal to connect Vin with gate terminal of both NMOS and PMOS
+- TWO P ACTIVE which forms the drain and source connection of PMOS
+- N WELL which forms the body to make VDD connection of PMOS
+Finally export the pins and place spice model of two MOSFET after reffering the technology file.
+the outcome looks like 
+
+![INVERTER_2](https://user-images.githubusercontent.com/55652905/178411115-4e0736ee-45ab-46fb-8cc6-c1171afcdff3.JPG)![INVERTER_4](https://user-images.githubusercontent.com/55652905/178411151-c9f1d13d-33ca-4e5c-b6bc-2767d3fd7657.JPG)![INVERTER_5](https://user-images.githubusercontent.com/55652905/178411174-852468d9-8539-4dc6-858a-e6b55b7a4361.JPG)
+
+after the construction please do make sure there is noo error while having DRC, ERC, LVS(NCC) checks. If there are error then it will get reflected on error log tab and do take adequate measures to avoid them.
+
+- Spice code and Output
+
+1. The transient analysis spice code
+
+```
+vdd vdd 0 dc 1.8
+vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
+.tran 1n 100n
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END
+```
+2. Transient analysis output
+
+![INVERTER_6](https://user-images.githubusercontent.com/55652905/178411863-4126116b-4abe-4ec5-a091-c11dfdc17dc2.JPG)
+
+3.  DC analysis spice code
+
+```
+vdd vdd 0 dc 1.8
+vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
+.dc vin 0 1.8 0.1m
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END
+```
+
 
 ❗ Updating Soon ❗
