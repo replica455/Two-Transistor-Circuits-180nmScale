@@ -1,0 +1,22 @@
+*** SPICE deck for cell INVERTER_SIM{lay} from library NOT
+*** Created on Sun Jul 10, 2022 20:50:06
+*** Last revised on Tue Jul 12, 2022 10:29:47
+*** Written on Tue Jul 12, 2022 11:01:44 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT NOT__INVERTER FROM CELL INVERTER{lay}
+.SUBCKT NOT__INVERTER gnd in out vdd
+Mnmos@0 out in gnd gnd NMOS L=0.36U W=1.8U AS=5.346P AD=3.645P PS=14.94U PD=8.1U
+Mpmos@0 out in vdd vdd PMOS L=0.36U W=3.6U AS=7.452P AD=3.645P PS=18.54U PD=8.1U
+.ENDS NOT__INVERTER
+
+*** TOP LEVEL CELL: INVERTER_SIM{lay}
+XINVERTER@0 gnd in out vdd NOT__INVERTER
+
+* Spice Code nodes in cell cell 'INVERTER_SIM{lay}'
+vdd vdd 0 dc 1.8
+vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
+.trans 0 100n
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END
