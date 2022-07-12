@@ -88,6 +88,7 @@ To have the layout of the of CMOS Inverter device we need to use
 4. POLYSILICON CONTACT for gate terminal to connect Vin with gate terminal of both NMOS and PMOS
 5. TWO P ACTIVE which forms the drain and source connection of PMOS
 6. N WELL which forms the body to make VDD connection of PMOS
+
 Finally export the pins and place spice model of two MOSFET after reffering the technology file.
 the outcome looks like 
 
@@ -119,7 +120,131 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 .include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
 .END
 ```
+4. DC analysis Output
 
 ![INVERTER_7](https://user-images.githubusercontent.com/55652905/178412444-a3b548f3-2740-4dae-b3ff-ef42341a3e56.JPG)
+
+- The parametric test
+
+Now as we are applying the VDD=1.8V so ideally we cam assume the switching threshole to be around or near about VDD/2 i.e. 1.8/2 = 0.9V, but from our DC analysis we foend that the curve is more than 0.9V. So to acieve this ideal nature what I am thinking to resize the PMOS device keeping the NMOS device size conatant. To acieve so we need to return to the LTSpice trrminal and have a change in code.
+
+- Modified transient analysis
+
+```
+Mnmos@0 out in gnd gnd NMOS L=0.36U W=1.8U AS=5.346P AD=3.645P PS=14.94U PD=8.1U
+Mpmos@0 out in vdd vdd PMOS L=0.36U W={wp} AS=7.452P AD=3.645P PS=18.54U PD=8.1U
+.ENDS NOT__INVERTER
+
+*** TOP LEVEL CELL: INVERTER_SIM{lay}
+XINVERTER@0 gnd in out vdd NOT__INVERTER
+
+* Spice Code nodes in cell cell 'INVERTER_SIM{lay}'
+vdd vdd 0 dc 1.8
+vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
+.step param wp 1u 10u 1u
+.trans 0 100n
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END
+```
+here we are considering the width of the PMOS as a parameter "wp" and later we are increasing the width from 1um to 10um with a step of 1um.
+
+- Modified transient analysis output
+
+![INVERTER_8](https://user-images.githubusercontent.com/55652905/178413983-0b676c2c-1465-4045-8033-a974a0372b00.JPG)
+
+- Modified DC analysis code
+
+```
+Mnmos@0 out in gnd gnd NMOS L=0.36U W=1.8U AS=5.346P AD=3.645P PS=14.94U PD=8.1U
+Mpmos@0 out in vdd vdd PMOS L=0.36U W={wp} AS=7.452P AD=3.645P PS=18.54U PD=8.1U
+.ENDS NOT__INVERTER
+
+*** TOP LEVEL CELL: INVERTER_SIM{lay}
+XINVERTER@0 gnd in out vdd NOT__INVERTER
+
+* Spice Code nodes in cell cell 'INVERTER_SIM{lay}'
+vdd vdd 0 dc 1.8
+vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
+.step param wp 1u 10u 1u
+.dc vin 0 1.8 0.1m
+.include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
+.END
+```
+Here we can see there is a grapg (second from the left) which passes through 0.9V approx whose corrosponding width is 2um resembles almost like ideal switching threshold. so for Optimized circuit we can choose the corrosponding curve.
+
+- Performance Matrix Test
+
+Now its high time for us to analize the performance parameter which can involve the measurement of 
+1. maximum output voltage 
+2. minimum output voltage
+3. Fall time 
+4. Rise time
+5. Falling Propagation Delay
+6. Rising Propagation Delay
+7. Average Propagation Delay
+8. Average Output Current
+9. Measurement of Charge
+10. Measurement of Energy
+11. Average output voltage fron 0 to 100nsec
+
+To achieve the resuft we need to have the measurement file with ".meas" extension. From LTSpice navigate to "FILE -> Execute .MEAS Script".
+
+The .MEAS Script -
+```
+* Some measurement
+.param VDD =1.8
+.measure Voutmax MAX V(out)
+.measure Voutmin MIN V(out)
+
+.measure tfall ; Falling time
++TRIG V(out) VAL = '0.8*1.0' FALL=1
++TRIG V(out) VAl = '0.2*1.0' FALL=1
+
+.measure trise ; Rising time
++TRIG V(out) VAL = '0.2*1.0' RISE=1
++TRIG V(out) VAL = '0.8*1.0' RISE=1
+
+.measure tpdf ; Falling propagation delay
++TRIG V(in) VAL = '0.8*1.0' RISE=1
++TRIG V(out) VAL = '0.2*1.0' FALL=1
+
+.measure tpdr ; Rising propagation delay
++TRIG V(in) VAL = '0.2*1.0' FALL=1
++TRIG V(out) VAL = '0.8*1.0' RISE=1
+
+.measure tpd PRAM '{tpdf+tpdr}/2' ; Avg. propagation delay
+
+.measure TRAN I(VDD) AVG
+.measure CHARGE INTEGRAL I(VDD) FROM= 0.1NS TO=20NS
+.measure ENERGY PARAM= 'CHARGE*VDD'
+```
+
+after executinf the script file in LTSpice the simulated result as follows
+
+```
+* C:\Users\bikas\OneDrive\Documents\Two_transistor_circuit_project\INVERTER\NOT.mout
+Voutmax: MAX(V(out))=1.82116 FROM 0 TO 1e-007
+Voutmin: MIN(V(out))=-0.0138693 FROM 0 TO 1e-007
+tfall=9.91458e-008 FROM 8.54249e-010 TO 1e-007
+trise=8.83469e-008 FROM 1.16531e-008 TO 1e-007
+tpdf=9.91458e-008 FROM 8.54249e-010 TO 1e-007
+tpdr=8.83469e-008 FROM 1.16531e-008 TO 1e-007
+tpd=1e-007 FROM 0 TO 1e-007
+I(VDD)=1e-007 FROM 0 TO 1e-007
+CHARGE: INTEG(I(VDD))=-1.48826e-014 FROM 1e-010 TO 2e-008
+ENERGY: (CHARGE*VDD)=-2.67886e-014
+```
+Now to get the average voltage output from 0 to 100nsec go to the transient analysis waveform. Press ctrl+Lclick on the V(out) tab of waveform, here we can find the result as
+
+```
+Interval Start : 0s
+Interval End : 100ns
+Average : 815.02mV
+RMS : 1.2031V
+```
+
+Thus at this point we have successfully conducted the basic CMOS INVERTER citcuit.
+
+# Circuit 2 -  
 
 ❗ Updating Soon ❗
