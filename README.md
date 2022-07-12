@@ -170,6 +170,11 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 .include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
 .END
 ```
+
+- Modified DC analysis output
+
+![INVERTER_9](https://user-images.githubusercontent.com/55652905/178419361-e0b1c9e1-66d4-4e7b-89b3-24d3ef1a591f.JPG)
+
 Here we can see there is a graph (second from the left) which passes through 0.9V approx whose corrosponding width is 2um resembles almost like ideal switching threshold. so for Optimized circuit we can choose the corrosponding curve.
 
 - Performance Matrix Test
