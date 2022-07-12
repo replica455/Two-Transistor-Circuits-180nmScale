@@ -128,7 +128,7 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 
 Now as we are applying the VDD=1.8V so ideally we cam assume the switching threshole to be around or near about VDD/2 i.e. 1.8/2 = 0.9V, but from our DC analysis we foend that the curve is more than 0.9V. So to acieve this ideal nature what I am thinking to resize the PMOS device keeping the NMOS device size conatant. To acieve so we need to return to the LTSpice trrminal and have a change in code.
 
-- Modified transient analysis
+- Modified transient analysis for Parametric Test
 
 ```
 Mnmos@0 out in gnd gnd NMOS L=0.36U W=1.8U AS=5.346P AD=3.645P PS=14.94U PD=8.1U
@@ -148,11 +148,11 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 ```
 here we are considering the width of the PMOS as a parameter "wp" and later we are increasing the width from 1um to 10um with a step of 1um.
 
-- Modified transient analysis output
+- Modified transient analysis output 
 
 ![INVERTER_8](https://user-images.githubusercontent.com/55652905/178413983-0b676c2c-1465-4045-8033-a974a0372b00.JPG)
 
-- Modified DC analysis code
+- Modified DC analysis code for Parametric Test
 
 ```
 Mnmos@0 out in gnd gnd NMOS L=0.36U W=1.8U AS=5.346P AD=3.645P PS=14.94U PD=8.1U
