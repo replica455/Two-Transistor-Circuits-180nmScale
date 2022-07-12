@@ -82,12 +82,12 @@ along with the schematic cell of the inverter we have also created the icon view
 - Layout
 
 To have the layout of the of CMOS Inverter device we need to use 
-- NMOS the device
-- TWO N ACTIVE which forms the drain and source connection of NMOS
-- P WELL which forms the body to make the ground connection of NMOS
-- POLYSILICON CONTACT for gate terminal to connect Vin with gate terminal of both NMOS and PMOS
-- TWO P ACTIVE which forms the drain and source connection of PMOS
-- N WELL which forms the body to make VDD connection of PMOS
+1. NMOS the device
+2. TWO N ACTIVE which forms the drain and source connection of NMOS
+3. P WELL which forms the body to make the ground connection of NMOS
+4. POLYSILICON CONTACT for gate terminal to connect Vin with gate terminal of both NMOS and PMOS
+5. TWO P ACTIVE which forms the drain and source connection of PMOS
+6. N WELL which forms the body to make VDD connection of PMOS
 Finally export the pins and place spice model of two MOSFET after reffering the technology file.
 the outcome looks like 
 
@@ -120,5 +120,6 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 .END
 ```
 
+![INVERTER_7](https://user-images.githubusercontent.com/55652905/178412444-a3b548f3-2740-4dae-b3ff-ef42341a3e56.JPG)
 
 ❗ Updating Soon ❗
