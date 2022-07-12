@@ -170,7 +170,7 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 .include C:\Users\bikas\OneDrive\Desktop\CAD TOOLS\C5_model.txt
 .END
 ```
-Here we can see there is a grapg (second from the left) which passes through 0.9V approx whose corrosponding width is 2um resembles almost like ideal switching threshold. so for Optimized circuit we can choose the corrosponding curve.
+Here we can see there is a graph (second from the left) which passes through 0.9V approx whose corrosponding width is 2um resembles almost like ideal switching threshold. so for Optimized circuit we can choose the corrosponding curve.
 
 - Performance Matrix Test
 
@@ -219,7 +219,7 @@ The .MEAS Script -
 .measure ENERGY PARAM= 'CHARGE*VDD'
 ```
 
-after executinf the script file in LTSpice the simulated result as follows
+after executing the script file in LTSpice the simulated result as follows
 
 ```
 * C:\Users\bikas\OneDrive\Documents\Two_transistor_circuit_project\INVERTER\NOT.mout
