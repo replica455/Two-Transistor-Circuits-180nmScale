@@ -250,6 +250,6 @@ RMS : 1.2031V
 
 Thus at this point we have successfully conducted the basic CMOS INVERTER citcuit.
 
-# Circuit 2 -  
+# Circuit 2 - The Current Mirror  
 
 ❗ Updating Soon ❗
