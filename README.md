@@ -73,13 +73,13 @@ In such manner we can also conduct the test of P channel MOSFET device. This con
 # Circuit 1 - The CMOS INVERTER 
 
 So this is the digital inverter. the input voltage Vin switches one of two transistor to ON state while other remains OFF.
-- The Schematic 
+### The Schematic 
 
 ![INVERTER_1](https://user-images.githubusercontent.com/55652905/178407851-051116ea-dccb-48e9-bdbf-eeefe50e3c31.JPG)
 
 along with the schematic cell of the inverter we have also created the icon view so as to reffer in other circuit with abstraction to internal circuitry and for the sake of convenience we have placed our spice code on the icon view. Asusual do perform the DRC check after forming the schematic.
 
-- Layout
+### Layout
 
 To have the layout of the of CMOS Inverter device we need to use 
 1. NMOS the device
@@ -96,7 +96,7 @@ the outcome looks like
 
 after the construction please do make sure there is noo error while having DRC, ERC, LVS(NCC) checks. If there are error then it will get reflected on error log tab and do take adequate measures to avoid them.
 
-- Spice code and Output
+### Spice code and Output
 
 1. The transient analysis spice code
 
@@ -124,7 +124,7 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 
 ![INVERTER_7](https://user-images.githubusercontent.com/55652905/178412444-a3b548f3-2740-4dae-b3ff-ef42341a3e56.JPG)
 
-- The parametric test
+### The parametric test
 
 Now as we are applying the VDD=1.8V so ideally we cam assume the switching threshole to be around or near about VDD/2 i.e. 1.8/2 = 0.9V, but from our DC analysis we foend that the curve is more than 0.9V. So to acieve this ideal nature what I am thinking to resize the PMOS device keeping the NMOS device size conatant. To acieve so we need to return to the LTSpice trrminal and have a change in code.
 
@@ -177,7 +177,7 @@ vin in 0 pulse (0 1.8 0 1n 1n 10n 20n)
 
 Here we can see there is a graph (second from the left) which passes through 0.9V approx whose corrosponding width is 2um resembles almost like ideal switching threshold. so for Optimized circuit we can choose the corrosponding curve.
 
-- Performance Matrix Test
+### Performance Matrix Test
 
 Now its high time for us to analize the performance parameter which can involve the measurement of 
 1. maximum output voltage 
